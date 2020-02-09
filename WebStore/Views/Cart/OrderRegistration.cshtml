@@ -1,0 +1,41 @@
+﻿@model WebStore.ViewModels.OrderViewModel
+@{
+    ViewData["Title"] = "OrderRegistration";
+}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="text-uppercase text-center">Order registration</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="OrderRegistration">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DeliveryDate"></label>
+                        <input asp-for="DeliveryDate" class="form-control" />
+                        <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                    </div>
+                    <input type="submit" value="Buy" class="btn btn-sm btn-success text-uppercase rounded-0" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section CategoryItems{}

@@ -1,0 +1,32 @@
+﻿@model WebStore.ViewModels.SignInViewModel
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="text-uppercase text-center">LogIn form</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="SignIn">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <input type="submit" style="min-width:150px" value="Sig In" class="btn btn-outline-success float-right" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section CategoryItems{}

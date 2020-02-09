@@ -1,0 +1,66 @@
+﻿@model WebStore.ViewModels.CartViewModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Cart List</h1>
+
+<div>
+    @{
+        if (@Model.Cart.Lines.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Discription</td>
+                        <td>Quantity</td>
+                        <td>Unit price</td>
+                        <td>Price</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var item in Model.Cart.Lines)
+                        {
+                            <tr>
+                                <td>@item.Product.Name</td>
+                                <td>@item.Product.Discription</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Product.Price</td>
+                                <td>@(item.Quantity * item.Product.Price)</td>
+                                <td>
+                                    @using (Html.BeginForm("RemoveFromCart", "cart"))
+                                    {
+                                        @Html.Hidden("Id", item.Product.Id);
+                                        <input style="width:150px" class="btn btn-outline-warning"
+                                               type="submit" value="Remove" />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="6"></td></tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>Subtotal:</td>
+                        <td>
+                            @Model.Cart.ComputeTotalValue()
+                        </td>
+                        <td>
+                            <a style="width:150px" class="btn btn-outline-success" asp-area="" asp-controller="Cart" asp-action="OrderRegistration">Place your order</a>
+                        </td>
+
+                </tfoot>
+            </table>
+        }
+        else
+        {
+            <p>Cart is empty</p>
+        }
+    }
+</div>
+@section CategoryItems{}

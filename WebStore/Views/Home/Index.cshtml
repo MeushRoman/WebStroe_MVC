@@ -1,0 +1,38 @@
+﻿@model WebStore.ViewModels.CartViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="d-flex flex-wrap justify-content-center">
+    @{
+        foreach (var item in ViewBag.Products)
+        {
+            <div>
+                <div class="card-img-top">
+                    <img style="max-width: 250px" src="https://www.samsung.com/etc/designs/smg/global/imgs/support/cont/NO_IMG_600x600.png">
+                </div>
+
+                <h4 class="card-title text-center">@item.Name</h4>
+                <h6 class="card-subtitle mb-2 text-muted text-center">@item.Discription</h6>
+                <p class="card-text text-center">Price: @item.Price</p>
+                <p class="card-text text-center"> <a href="~/Home/Buy/@item.Id" class="btn btn-outline-secondary">Add to cart</a></p>
+            </div>
+        }
+    }
+</section>
+@section CategoryItems{
+    <li class="nav-item dropdown">
+        <a style="font-size:16px" class="nav-link text-dark dropdown-header" href="#" data-toggle="dropdown" id="navbarDropdownMenuLink"  aria-haspopup="true" aria-expanded="false">Categories</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+            @{foreach (var item in ViewBag.Categories)
+                {
+                    <a class="dropdown-item" href="#">@item.Name</a>
+                }
+            }
+            
+        </div>
+    </li>
+}
+
+

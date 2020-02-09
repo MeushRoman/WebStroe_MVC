@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "MyCabinet";
+}
+
+<h3><span>Hello @ViewBag.User.Name</span></h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+           <th scope="col">Order Number</th>
+           <th scope="col">Adress</th>
+           <th scope="col">Order Date</th>
+           <th scope="col">Delivere Date</th>  
+           <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var ordersUser in ViewBag.Orders)
+            {
+                <tr>
+                    <td>@ordersUser.Order.Id</td>
+                    <td>@ordersUser.Order.Adress</td>                      
+                    <td>@ordersUser.Order.OrderDate</td>                      
+                    <td>@ordersUser.Order.DeliveryDate</td>                      
+                    <td>@ordersUser.Order.StatusId</td>                      
+                </tr>          
+            }
+        }
+
+    </tbody>   
+</table>
+      
+
+
+
+@section CategoryItems{}
